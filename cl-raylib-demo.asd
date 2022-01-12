@@ -15,4 +15,5 @@
   :pathname "src"
   :components ((:file "package")
                (:file "screen-logo")
+               (:file "screen-title")
                (:file "game")))
