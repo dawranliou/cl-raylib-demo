@@ -8,8 +8,16 @@
 (defvar *trans-alpha* 0.0)
 (defvar *on-transition-p* nil)
 (defvar *trans-fade-out-p* nil)
-(defvar *trans-from-screen* -1)
-(defvar *trans-to-screen* -1)
+(defvar *trans-from-screen* nil)
+(defvar *trans-to-screen* nil)
+
+(defun init-game ()
+  (setq *current-screen* :logo
+        *trans-alpha* 0.0
+        *on-transition-p* nil
+        *trans-fade-out-p* nil
+        *trans-from-screen* nil
+        *trans-to-screen* nil))
 
 (defun transition-to-screen (screen)
   (setq *on-transition-p* t
@@ -66,6 +74,7 @@
 
 (defun main ()
   (with-window (*screen-width* *screen-height* "Demo")
+    (init-game)
     (init-logo-screen)
     (set-target-fps 60)
 
