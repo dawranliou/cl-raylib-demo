@@ -36,11 +36,13 @@
           (case *trans-from-screen*
             (:logo (unload-logo-screen))
             (:title (unload-title-screen))
-            (:gameplay (unload-gameplay-screen)))
+            (:gameplay (unload-gameplay-screen))
+            (:ending (unload-ending-screen)))
           (case *trans-to-screen*
             (:logo (init-logo-screen))
             (:title (init-title-screen))
-            (:gameplay (init-gameplay-screen)))
+            (:gameplay (init-gameplay-screen))
+            (:ending (init-ending-screen)))
           (setq *current-screen* *trans-to-screen*
                 *trans-fade-out-p* t)))
       ;; Fade out
@@ -77,14 +79,19 @@
         (:gameplay
          (update-gameplay-screen)
          (when (= (finish-gameplay-screen) 1)
-           (transition-to-screen :ending)))))
+           (transition-to-screen :ending)))
+        (:ending
+         (update-ending-screen)
+         (when (= (finish-gameplay-screen) 1)
+           (transition-to-screen :title)))))
 
     (with-drawing
       (clear-background +raywhite+)
       (case *current-screen*
         (:logo (draw-logo-screen))
         (:title (draw-title-screen))
-        (:gameplay (draw-gameplay-screen)))
+        (:gameplay (draw-gameplay-screen))
+        (:ending (draw-ending-screen)))
 
       (when *on-transition-p* (draw-transition))))
 
@@ -102,7 +109,8 @@
     (case *current-screen*
       (:logo (unload-logo-screen))
       (:title (unload-title-screen))
-      (:gameplay (unload-gameplay-screen)))))
+      (:gameplay (unload-gameplay-screen))
+      (:ending (unload-ending-screen)))))
 
 #+nil
 (main)

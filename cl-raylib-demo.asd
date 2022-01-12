@@ -17,4 +17,5 @@
                (:file "screen-logo")
                (:file "screen-title")
                (:file "screen-gameplay")
+               (:file "screen-ending")
                (:file "game")))
