@@ -1,0 +1,22 @@
+(in-package #:cl-raylib-demo)
+
+(defvar *frame-counter* 0)
+(defvar *finish-screen* 0)
+
+(defun init-gameplay-screen ()
+  (setq *frame-counter* 0
+        *finish-screen* 0))
+
+(defun update-gameplay-screen ()
+  (when (is-key-pressed +key-enter+)
+    (setq *finish-screen* 1)))
+
+(defun draw-gameplay-screen ()
+  (draw-rectangle 0 0 (get-screen-width) (get-screen-height) +purple+)
+  (draw-text "GAMEPLAY SCREEN" 20 10 20 +maroon+)
+  (draw-text "PRESS ENTER or TAP to JUMP to ENDING SCREEN" 120 220 20 +maroon+))
+
+(defun unload-gameplay-screen ())
+
+(defun finish-gameplay-screen ()
+  *finish-screen*)

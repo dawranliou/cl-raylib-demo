@@ -16,4 +16,5 @@
   :components ((:file "package")
                (:file "screen-logo")
                (:file "screen-title")
+               (:file "screen-gameplay")
                (:file "game")))
