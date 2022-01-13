@@ -10,6 +10,12 @@
   :author "Daw-Ran Liou <hi@dawranliou.com>"
   :license  "MIT"
   :version "0.0.1"
+
+  :defsystem-depends-on (:deploy)
+  :build-operation "deploy-op"
+  :build-pathname "cl-raylib-demo"
+  :entry-point "cl-raylib-demo:main"
+
   :depends-on (:cl-raylib)
   :serial t
   :pathname "src"
